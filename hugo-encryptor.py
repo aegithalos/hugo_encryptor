@@ -97,7 +97,7 @@ const _click_handler = function(element) {
 
   let storage = localStorage;
 
-  let key = location.pathname + ".password." + index;
+  let key = ".password."
   storage.setItem(key, password);
   parent.innerHTML = decrypted;
 }
@@ -110,7 +110,7 @@ window.onload = () => {
   while (1) {
     ++index;
 
-    let key = location.pathname + ".password." + index;
+    let key = ".password.";
     let password = localStorage.getItem(key);
 
     if (!password) {
@@ -151,15 +151,15 @@ window.onload = () => {
                 if block is None:
                     pass
 
-                else:      
+                else:
                     language = block.find('p')
 
                     if language.string == 'Part of this article is encrypted with password:':
                         prompt = BeautifulSoup('<p><i>Part of this article is encrypted with password, please goto the original webpage to check it out.</i></p>', 'html.parser')
-                    
+
                     else:
                         prompt = BeautifulSoup('<p><i>以下内容被密码保护。请前往原网站查看。</i></p>','html.parser')
-                    
+
                     block.replace_with(prompt)
                     description.string.replace_with(str(post))
 
